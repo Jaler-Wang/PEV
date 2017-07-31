@@ -21,7 +21,10 @@ Create the Genesis block:
 
 
 Use below command to init a private chain
-geth --identity "yiduo" --genesis myGenesis.json --rpc --rpcport "8000" --rpccorsdomain "*" --datadir "C:\chains\VPSChain" --port "30303" --nodiscover --ipcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --rpcapi "db,eth,net,web3" --autodag --networkid 1900 --nat "any" console
+geth --identity "yiduo" --rpc --rpcport "8000" --rpccorsdomain "*" --datadir "C:\chains\VPSChain" --port "30303" --nodiscover --ipcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --rpcapi "db,eth,net,web3" --autodag --networkid 100 init "./myGenesis.json"
+
+use below command to start the private chain:
+geth --datadir "/Users/daisy/mychains/dev" --identity "yiduo" --rpc --rpcapi "db,eth,net,web3,personal,miner" --rpccorsdomain "*" --networkid 100 console
 
 Below is the explain for the parameters:
 --nodiscover other people cannot find your private chain 
