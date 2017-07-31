@@ -1,4 +1,4 @@
-# PEV
+# PEC
 Private Ethereum Chain
 
 Create a private Ethereum chain
