@@ -1,0 +1,13 @@
+### EVM的内存可以分为几部分，其中合约所在的空间我们称之为storage，该部分是永久保存的；memory部分则不会永久保存。他们上面的array也有不同的特点：
+storage 上面的可变长array可以动态的改变长度（如array.length = 20 则数组长度变为20）， memory 上面的array则不可以，进行类似操作。
+当进行赋值或者参数传递时，不同位置的变量传递方式也会不同，如memory上面的变量赋值给storage上面的变量就会完全复制一份，反之依然。memory到memory或者storage到storage则只会传递引用
+function test(uint[] _x) //直接调用该函数时是值传递
+function test(uint[] storage _x) //显示指定参数类型为storage则会进行refrence传递，不过这种改变默认参数类型的函数只能是internal or private(如果不指定，则编译器会将其转换成internal)
+
+### event 可以起到记录log的作用
+event transfer(address from, address to, uint value);
+event transfer(address indexed from, address to, uint value);
+
+上面两个的不同之处在于 from前面加了一个indexed;
+默认event是现在receipt的data部分，加上indexed以后就会写到部分；
+需要注意的是topics最多只能有四个，event name占了一个，所以一个event最多只能有三个indexed型变量
